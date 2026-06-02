@@ -198,53 +198,7 @@ def index():
     return send_from_directory(STATIC_DIR, "kinesia.html")
 
 
-@app.route("/chat", methods=["POST"])
-def chat():
 
-    # Check API key
-    if not API_KEY or API_KEY == "AQ.Ab8RN6I6kUYMmKy51LwhrndkfhS8BHyEUARQCkn_B2zpCQJCXwYl8a9n0m":
-        return jsonify({
-            "error": "Google API key not configured."
-        }), 500
-
-    try:
-        data = request.get_json(force=True)
-
-        if not data or "messages" not in data:
-            return jsonify({
-                "error": "Invalid request — 'messages' field required."
-            }), 400
-
-        messages = data["messages"]
-
-        # Convert chat history into Gemini format
-        prompt = ""
-
-        system_prompt = data.get("system", "")
-        if system_prompt:
-            prompt += f"System: {system_prompt}\n\n"
-
-        for msg in messages:
-            role = msg.get("role", "user")
-            content = msg.get("content", "")
-
-            if role == "user":
-                prompt += f"User: {content}\n"
-            else:
-                prompt += f"Assistant: {content}\n"
-
-        # Generate response
-        response = model.generate_content(prompt)
-
-        # Return clean response
-        return jsonify({
-            "content": response.text
-        })
-
-    except Exception as e:
-        return jsonify({
-            "error": str(e)
-        }), 500
 
 
 # ─────────────────────────────────────────────────────────────
