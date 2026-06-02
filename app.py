@@ -21,7 +21,6 @@ Usage:
 """
 
 import os
-import google.generativeai as genai
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
