@@ -124,7 +124,7 @@ def chat():
 
         # Generate response
         response = client.models.generate_content(
-            print("GEMINI RESPONSE:", response)
+        print("GEMINI RESPONSE:", response)
             model=MODEL_NAME,
             contents=prompt
         )
