@@ -31,7 +31,7 @@ from flask_cors import CORS
 # ─────────────────────────────────────────────────────────────
 
 API_KEY = os.environ.get("GOOGLE_API_KEY", "YOUR_API_KEY_HERE")
-MODEL_NAME = "gemini-1.5-flash"
+MODEL_NAME = "gemini-2.5-flash"
 STATIC_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Configure Gemini
