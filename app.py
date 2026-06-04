@@ -97,10 +97,10 @@ def chat():
         })
 
     except Exception as e:
-    print("CHAT ERROR:", str(e))
-    return jsonify({
-        "error": str(e)
-    }), 500
+        print("CHAT ERROR:", str(e))
+        return jsonify({
+            "error": str(e)
+        }), 500
 
 
 # ─────────────────────────────────────────────────────────────
